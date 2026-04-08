@@ -5,6 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ajinkya Chivare | Contact</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Contact Page Specific Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .form-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #4f8ef7;
+      background: rgba(79, 142, 247, 0.05);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-3px);
+    }
+
+    /* Specific Brand Hover Colors */
+    .github-btn:hover { border-color: #ffffff; box-shadow: 0 5px 15px rgba(255,255,255,0.1); }
+    .linkedin-btn:hover { border-color: #0077b5; box-shadow: 0 5px 15px rgba(0, 119, 181, 0.2); }
+    .leetcode-btn:hover { border-color: #ffa116; box-shadow: 0 5px 15px rgba(255, 161, 22, 0.2); }
+    .email-btn:hover { border-color: #ea4335; box-shadow: 0 5px 15px rgba(234, 67, 53, 0.2); }
+  </style>
 </head>
 <body>
 
@@ -16,58 +84,78 @@
     <li><a href="projects.html">Work</a></li>
     <li><a href="resume.html">Resume</a></li>
   </ul>
-  <a href="contact.html" class="nav-cta" style="background: #e0e0e0; color: #000;">Contact</a>
+  <a href="contact.html" class="nav-cta">Contact</a>
 </nav>
 
 <div class="container">
-  <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh;">
-    
-    <p class="section-label">Get In Touch</p>
-    <h1 class="section-title">Let's build together.</h1>
-    <p style="color: var(--muted); font-size: 1.2rem; margin-bottom: 3rem;">
-      Whether it's an internship or a tech chat — my inbox is open.
-    </p>
+  <main>
+    <p class="section-label">Get in Touch</p>
+    <h1 class="section-title">Let's build something.</h1>
 
-    <div class="bento-card col-12" style="width: 100%; max-width: 600px;">
+    <div class="bento-grid">
       
-      <form action="https://formspree.io/f/mnjorlwd" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="bento-card col-8">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Send a Message</h3>
+        <p style="color: var(--muted); margin-bottom: 2rem;">Currently exploring software engineering internship opportunities for Summer 2026. I typically respond within 24 hours.</p>
         
-        <input 
-          type="text" 
-          name="name"
-          placeholder="Your Name" 
-          required 
-          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem;"
-        >
+        <form class="contact-form" action="https://formspree.io/f/mnjorlwd" method="POST">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="_replyto" class="form-input" placeholder="john@example.com" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" class="form-input" placeholder="Internship Opportunity / Freelance Inquiry" required>
+          </div>
 
-        <input 
-          type="email" 
-          name="email"
-          placeholder="Your Email Address" 
-          required 
-          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem;"
-        >
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-input" placeholder="Hello Ajinkya, I would like to discuss..." required></textarea>
+          </div>
 
-        <textarea 
-          name="message"
-          placeholder="How can I help you?" 
-          rows="5" 
-          required 
-          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem; resize: vertical;"
-        ></textarea>
+          <input type="hidden" name="_subject" value="New submission from Ajinkya. Portfolio!">
+          
+          <button type="submit" class="btn-primary" style="margin-top: 1rem; border: none; cursor: pointer;">Send Message</button>
+        </form>
+      </div>
 
-        <button 
-          type="submit" 
-          class="btn-primary" 
-          style="width: 100%; padding: 1.2rem;"
-        >
-          Send Message
-        </button>
+      <div class="bento-card col-4">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Connect</h3>
+        
+        <a href="https://github.com/ajinkyac07" target="_blank" class="social-btn github-btn">
+          <span>GitHub</span>
+          <span>&rarr;</span>
+        </a>
+        
+        <a href="https://linkedin.com/in/ajinkyachivare/" target="_blank" class="social-btn linkedin-btn">
+          <span>LinkedIn</span>
+          <span>&rarr;</span>
+        </a>
 
-      </form>
+        <a href="https://leetcode.com/u/Lx7VqVXOoo/" target="_blank" class="social-btn leetcode-btn">
+          <span>LeetCode</span>
+          <span>&rarr;</span>
+        </a>
+
+        <a href="mailto:ajinkyachivare@gmail.com" class="social-btn email-btn">
+          <span>Email Me</span>
+          <span>&rarr;</span>
+        </a>
+
+        <div style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Location</p>
+          <p style="font-size: 1rem; color: var(--text); font-weight: 500;">Vellore, Tamil Nadu, India</p>
+        </div>
+      </div>
 
     </div>
-
   </main>
 
   <footer>
