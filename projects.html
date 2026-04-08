@@ -16,6 +16,7 @@
       position: relative;
       overflow: hidden;
       background: #050505;
+      border-bottom: 1px solid var(--border);
     }
 
     .glow-circle {
@@ -50,6 +51,22 @@
       margin-top: 1rem;
       width: 100%;
     }
+
+    .project-link-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .project-link-btn:hover {
+      color: #4f8ef7;
+      border-color: #4f8ef7;
+    }
   </style>
 </head>
 <body>
@@ -80,12 +97,13 @@
         <div class="skill-tags" style="margin-bottom: 1rem;">
           <span class="tag">JavaScript</span><span class="tag">Physics Engine</span>
         </div>
-        <h3>Sandboxels Mod Framework</h3>
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sandboxels Mod Framework</h3>
         <p style="color: var(--muted); margin-bottom: 1rem;">Engineered a massive custom modification for the Sandboxels browser game. Designed complex falling-sand physics and mapped custom elemental interactions from scratch.</p>
         <div class="achievement-pill">
           <span style="font-size: 1.2rem;">🏆</span>
-          <p style="font-size: 0.9rem; color: var(--text);">Optimized core update loops to maintain 60fps with 10k+ interacting particles[cite: 9].</p>
+          <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Optimized core update loops to maintain 60fps with 10k+ interacting particles.</p>
         </div>
+        <a href="https://github.com/ajinkyac07/sandboxels-mod" class="project-link-btn" target="_blank">View on GitHub &rarr;</a>
       </div>
 
       <div class="bento-card col-6" style="padding-top:0;">
@@ -96,10 +114,10 @@
         <div class="skill-tags" style="margin-bottom: 1rem;">
           <span class="tag">Python</span><span class="tag">LangChain</span>
         </div>
-        <h3>SmartNote — AI Assistant</h3>
-        <p style="color: var(--muted);">Full-stack web application utilizing LLMs to parse dense academic PDFs into summaries and interactive questions.</p>
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">SmartNote — AI Assistant</h3>
+        <p style="color: var(--muted); font-size: 0.95rem;">Full-stack web application utilizing LLMs to parse dense academic PDFs into summaries and interactive questions.</p>
         <div class="achievement-pill">
-          <p style="font-size: 0.85rem;">Achieved 93% accuracy on VIT university exam paper generation[cite: 9].</p>
+          <p style="font-size: 0.85rem; margin: 0;">Achieved 93% accuracy on VIT university exam paper generation.</p>
         </div>
       </div>
 
@@ -111,29 +129,36 @@
         <div class="skill-tags" style="margin-bottom: 1rem;">
           <span class="tag">Bioinformatics</span><span class="tag">AlphaFold</span>
         </div>
-        <h3>Bioluminescent Plant Sim</h3>
-        <p style="color: var(--muted);">Utilized AlphaFold to model protein structures within the Foxfire pathway to predict optimized gene sequences.</p>
+        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Bioluminescent Plant Sim</h3>
+        <p style="color: var(--muted); font-size: 0.95rem;">Utilized AlphaFold to model protein structures within the Foxfire pathway to predict optimized gene sequences.</p>
         <div class="achievement-pill">
-          <p style="font-size: 0.85rem;">Generated high-confidence models (pLDDT > 90) for light output[cite: 9].</p>
+          <p style="font-size: 0.85rem; margin: 0;">Generated high-confidence models (pLDDT > 90) for light output.</p>
+        </div>
+        <a href="https://alphafoldserver.com/fold/10a30d10ef880fa3" class="project-link-btn" target="_blank">View AlphaFold Output &rarr;</a>
+      </div>
+
+      <div class="bento-card col-12" style="padding-top:0;">
+        <div class="project-visual">
+          <div class="glow-circle" style="background: #ff4757;"></div>
+          <div class="project-icon-large">💬</div>
+        </div>
+        <div class="skill-tags" style="margin-bottom: 1rem;">
+          <span class="tag">React</span><span class="tag">Socket.io</span><span class="tag">Redis</span>
+        </div>
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">CollabSpace — Real-Time IDE</h3>
+        <p style="color: var(--muted); margin-bottom: 1rem;">A browser-based collaborative code editor with real-time syncing via WebSockets, multi-language support, and persistent session sharing.</p>
+        <div class="achievement-pill">
+          <span style="font-size: 1.2rem;">🏆</span>
+          <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Built and deployed within 36 hours, winning 1st place overall at HackVIT.</p>
         </div>
       </div>
       
     </div>
+
     <p class="section-label" style="margin-top: 6rem;">Archive & Experiments</p>
     <h2 class="section-title">Additional Work.</h2>
 
     <div class="bento-grid">
-      
-      <div class="bento-card col-4">
-        <div style="font-size: 1.5rem; margin-bottom: 1rem;">⚛️</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Quantum Scattering Sim</h3>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">Python-based simulation of the Compton effect for visualizing photon-electron interactions.</p>
-        <div class="skill-tags">
-          <span class="tag" style="font-size: 0.7rem;">NumPy</span>
-          <span class="tag" style="font-size: 0.7rem;">Matplotlib</span>
-        </div>
-      </div>
-
       <div class="bento-card col-4">
         <div style="font-size: 1.5rem; margin-bottom: 1rem;">📟</div>
         <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">OS Process Scheduler</h3>
@@ -154,26 +179,15 @@
         </div>
       </div>
 
-      <div class="bento-card col-6">
+      <div class="bento-card col-4">
         <div style="font-size: 1.5rem; margin-bottom: 1rem;">⛓️</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Mini-Blockchain Ledger</h3>
+        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Mini-Blockchain</h3>
         <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">A simplified decentralized ledger implemented in Python with Proof-of-Work (PoW) consensus logic.</p>
         <div class="skill-tags">
           <span class="tag" style="font-size: 0.7rem;">Python</span>
           <span class="tag" style="font-size: 0.7rem;">Cryptography</span>
         </div>
       </div>
-
-      <div class="bento-card col-6">
-        <div style="font-size: 1.5rem; margin-bottom: 1rem;">⚽</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">PitchVision Analytics</h3>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">Computer vision tool to track player movement and heatmaps from static football match footage.</p>
-        <div class="skill-tags">
-          <span class="tag" style="font-size: 0.7rem;">OpenCV</span>
-          <span class="tag" style="font-size: 0.7rem;">Tracking</span>
-        </div>
-      </div>
-
     </div>
   </main>
 

@@ -6,22 +6,58 @@
   <title>Ajinkya Chivare | Home</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* FAQ Section Specific Styles */
-    .faq-section {
-      margin-top: 6rem;
+    /* Profile Image Card Styles */
+    .profile-photo-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #050505;
     }
+
+    .profile-photo {
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(255, 255, 255, 0.08);
+      z-index: 2;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .photo-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.03);
+      filter: blur(25px);
+      z-index: 1;
+      transition: background 0.4s ease;
+    }
+
+    .bento-card.col-4:hover .profile-photo {
+      transform: scale(1.05);
+      border-color: rgba(79, 142, 247, 0.5);
+    }
+
+    .bento-card.col-4:hover .photo-glow {
+      background: rgba(79, 142, 247, 0.15);
+    }
+
+    /* FAQ Section Styles */
+    .faq-section { margin-top: 6rem; }
     .faq-title {
-      font-family: 'Courier New', Courier, monospace; /* Matches the image vibe */
+      font-family: 'Courier New', Courier, monospace; 
       font-size: 1.2rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
       color: var(--text);
     }
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
+    .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     .faq-item {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border);
@@ -34,43 +70,26 @@
       border-color: rgba(255, 255, 255, 0.15);
     }
     .faq-item summary {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       font-family: 'Courier New', Courier, monospace;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: var(--text);
-      cursor: pointer;
-      list-style: none; /* Hides default browser arrow */
-    }
-    .faq-item summary::-webkit-details-marker {
-      display: none; /* Hides default arrow in older Safari */
+      font-size: 0.95rem; font-weight: 600; color: var(--text); cursor: pointer; list-style: none;
     }
     .faq-icon {
-      font-size: 1.2rem;
-      font-weight: 400;
-      color: var(--muted);
+      font-size: 1.2rem; font-weight: 400; color: var(--muted);
       transition: transform 0.3s ease;
     }
     .faq-item[open] .faq-icon {
-      transform: rotate(45deg); /* Turns the + into an x when opened */
+      transform: rotate(45deg);
       color: var(--text);
     }
     .faq-answer {
-      margin-top: 1rem;
-      padding-top: 1rem;
+      margin-top: 1rem; padding-top: 1rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+      color: var(--muted); font-size: 0.9rem; line-height: 1.6;
     }
     
-    /* Responsive FAQ Grid */
     @media (max-width: 768px) {
-      .faq-grid {
-        grid-template-columns: 1fr;
-      }
+      .faq-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -108,8 +127,11 @@
         <p style="font-size: 1.15rem; color: var(--muted);">Currently exploring opportunities for Summer 2026.</p>
       </div>
       
-      <div class="bento-card col-4" style="padding: 0; min-height: 300px; background: linear-gradient(145deg, #1a1a1a, #050505); display: flex; align-items: center; justify-content: center;">
-        <span style="font-size: 5rem; font-weight: 800; color: #222;">AC</span>
+      <div class="bento-card col-4" style="padding: 0; min-height: 300px; position: relative;">
+        <div class="profile-photo-container">
+          <div class="photo-glow"></div>
+          <img src="https://lh3.googleusercontent.com/d/10L4TZMu25c257Leoh69drOBjHgJtT8ga" alt="Ajinkya Chivare Portrait" class="profile-photo">
+        </div>
       </div>
 
       <div class="bento-card col-4" style="text-align: center;">
@@ -129,40 +151,32 @@
     <div class="faq-section">
       <h3 class="faq-title">Questions and Answers:</h3>
       <div class="faq-grid">
-        
         <details class="faq-item">
           <summary>What do you specialize in?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">I specialize in core computer science fundamentals, algorithm design, and building robust web applications. I also have a strong interest in emerging fields like machine learning and quantum mechanics.</div>
         </details>
-
         <details class="faq-item">
           <summary>Are you looking for internships?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">Yes! I am actively looking for software engineering and web development internship opportunities for Summer 2026 where I can tackle complex logic problems and contribute to impactful projects.</div>
         </details>
-
         <details class="faq-item">
           <summary>Do you take on freelance projects?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">Absolutely. I have experience building custom responsive landing pages and developing automated scripts for local businesses. Feel free to reach out via my contact page.</div>
         </details>
-
         <details class="faq-item">
           <summary>What is your primary tech stack?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">My go-to stack currently includes Python and C++ for core logic and problem solving, React/Next.js for frontend architecture, and PostgreSQL for database management.</div>
         </details>
-
         <details class="faq-item">
           <summary>Do you participate in hackathons?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">I do! I love the fast-paced environment. I recently won 1st Place at the HackVIT flagship hackathon where my team built a real-time collaborative IDE in 36 hours.</div>
         </details>
-
         <details class="faq-item">
           <summary>How do we get started?<span class="faq-icon">+</span></summary>
           <div class="faq-answer">The easiest way is to head over to my Contact page and send me a message through the form, or connect with me directly on LinkedIn. I usually respond within 24 hours.</div>
         </details>
-
       </div>
     </div>
-
   </main>
 
   <footer>
