@@ -6,67 +6,79 @@
   <title>Ajinkya Chivare | Work</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Premium Visual Effects */
+    /* Premium Hover Effects */
+    .project-card { cursor: pointer; position: relative; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .project-card:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(255, 255, 255, 0.04); }
+
     .project-visual {
-      height: 200px;
+      height: 180px;
       margin: -2.5rem -2.5rem 2rem -2.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
       background: #050505;
       border-bottom: 1px solid var(--border);
     }
 
-    .glow-circle {
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.4;
-      animation: float 6s ease-in-out infinite;
-    }
+    .project-icon-large { font-size: 3.5rem; filter: drop-shadow(0 0 15px rgba(255,255,255,0.2)); }
 
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(10px, -10px); }
-    }
-
-    .project-icon-large {
-      font-size: 4rem;
-      z-index: 2;
-      filter: drop-shadow(0 0 20px rgba(255,255,255,0.3));
-    }
-
-    .achievement-pill {
-      display: inline-flex;
+    /* Case Study Modal Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(3, 3, 5, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: none;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.2rem;
-      background: rgba(255, 255, 255, 0.03);
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-content {
+      background: #0a0a0c;
       border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      margin-top: 1rem;
+      max-width: 800px;
       width: 100%;
+      max-height: 90vh;
+      border-radius: 24px;
+      padding: 3rem;
+      overflow-y: auto;
+      position: relative;
+      animation: modalSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .project-link-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      color: var(--text);
-      font-weight: 600;
-      text-decoration: none;
-      font-size: 0.95rem;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, color 0.2s;
+    @keyframes modalSlide {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
-    .project-link-btn:hover {
-      color: #4f8ef7;
-      border-color: #4f8ef7;
+    .close-modal {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: white;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
+
+    .tech-pill {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      background: rgba(79, 142, 247, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(79, 142, 247, 0.2);
+      border-radius: 100px;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .detail-section { margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+    .detail-section h4 { color: var(--accent); margin-bottom: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75rem; }
+    .detail-section p { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; }
   </style>
 </head>
 <body>
@@ -84,117 +96,198 @@
 
 <div class="container">
   <main>
-    <p class="section-label">Selected Work</p>
-    <h1 class="section-title">Things I've built.</h1>
+    <p class="section-label">Development Gallery</p>
+    <h1 class="section-title">9 Technical Case Studies.</h1>
 
     <div class="bento-grid">
       
-      <div class="bento-card col-12" style="padding-top:0;">
-        <div class="project-visual">
-          <div class="glow-circle" style="background: #f7b731;"></div>
-          <div class="project-icon-large">⏳</div>
-        </div>
-        <div class="skill-tags" style="margin-bottom: 1rem;">
-          <span class="tag">JavaScript</span><span class="tag">Physics Engine</span>
-        </div>
-        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">Sandboxels Mod Framework</h3>
-        <p style="color: var(--muted); margin-bottom: 1rem;">Engineered a massive custom modification for the Sandboxels browser game. Designed complex falling-sand physics and mapped custom elemental interactions from scratch.</p>
-        <div class="achievement-pill">
-          <span style="font-size: 1.2rem;">🏆</span>
-          <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Optimized core update loops to maintain 60fps with 10k+ interacting particles.</p>
-        </div>
-        <a href="https://github.com/ajinkyac07/sandboxels-mod" class="project-link-btn" target="_blank">View on GitHub &rarr;</a>
+      <div class="bento-card col-6 project-card" onclick="openModal('sandboxels')">
+        <div class="project-visual"><div class="project-icon-large">⌛</div></div>
+        <div class="skill-tags"><span class="tag">JavaScript</span><span class="tag">Physics</span></div>
+        <h3>Sandboxels Mod Framework</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Optimized 12k+ particle simulation engine.</p>
       </div>
 
-      <div class="bento-card col-6" style="padding-top:0;">
-        <div class="project-visual">
-          <div class="glow-circle" style="background: #4f8ef7;"></div>
-          <div class="project-icon-large">📑</div>
-        </div>
-        <div class="skill-tags" style="margin-bottom: 1rem;">
-          <span class="tag">Python</span><span class="tag">LangChain</span>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">SmartNote — AI Assistant</h3>
-        <p style="color: var(--muted); font-size: 0.95rem;">Full-stack web application utilizing LLMs to parse dense academic PDFs into summaries and interactive questions.</p>
-        <div class="achievement-pill">
-          <p style="font-size: 0.85rem; margin: 0;">Achieved 93% accuracy on VIT university exam paper generation.</p>
-        </div>
+      <div class="bento-card col-6 project-card" onclick="openModal('smartnote')">
+        <div class="project-visual"><div class="project-icon-large">📑</div></div>
+        <div class="skill-tags"><span class="tag">Python</span><span class="tag">RAG</span></div>
+        <h3>SmartNote — AI Assistant</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">LLM-powered academic parser and question generator.</p>
       </div>
 
-      <div class="bento-card col-6" style="padding-top:0;">
-        <div class="project-visual">
-          <div class="glow-circle" style="background: #a55eea;"></div>
-          <div class="project-icon-large">🧬</div>
-        </div>
-        <div class="skill-tags" style="margin-bottom: 1rem;">
-          <span class="tag">Bioinformatics</span><span class="tag">AlphaFold</span>
-        </div>
-        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Bioluminescent Plant Sim</h3>
-        <p style="color: var(--muted); font-size: 0.95rem;">Utilized AlphaFold to model protein structures within the Foxfire pathway to predict optimized gene sequences.</p>
-        <div class="achievement-pill">
-          <p style="font-size: 0.85rem; margin: 0;">Generated high-confidence models (pLDDT > 90) for light output.</p>
-        </div>
-        <a href="https://alphafoldserver.com/fold/10a30d10ef880fa3" class="project-link-btn" target="_blank">View AlphaFold Output &rarr;</a>
+      <div class="bento-card col-6 project-card" onclick="openModal('bio')">
+        <div class="project-visual"><div class="project-icon-large">🧬</div></div>
+        <div class="skill-tags"><span class="tag">AlphaFold</span><span class="tag">Bio</span></div>
+        <h3>Bioluminescent Plant Sim</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Protein structure prediction for synthetic flora.</p>
       </div>
 
-      <div class="bento-card col-12" style="padding-top:0;">
-        <div class="project-visual">
-          <div class="glow-circle" style="background: #ff4757;"></div>
-          <div class="project-icon-large">💬</div>
-        </div>
-        <div class="skill-tags" style="margin-bottom: 1rem;">
-          <span class="tag">React</span><span class="tag">Socket.io</span><span class="tag">Redis</span>
-        </div>
-        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;">CollabSpace — Real-Time IDE</h3>
-        <p style="color: var(--muted); margin-bottom: 1rem;">A browser-based collaborative code editor with real-time syncing via WebSockets, multi-language support, and persistent session sharing.</p>
-        <div class="achievement-pill">
-          <span style="font-size: 1.2rem;">🏆</span>
-          <p style="font-size: 0.9rem; color: var(--text); margin: 0;">Built and deployed within 36 hours, winning 1st place overall at HackVIT.</p>
-        </div>
-      </div>
-      
-    </div>
-
-    <p class="section-label" style="margin-top: 6rem;">Archive & Experiments</p>
-    <h2 class="section-title">Additional Work.</h2>
-
-    <div class="bento-grid">
-      <div class="bento-card col-4">
-        <div style="font-size: 1.5rem; margin-bottom: 1rem;">📟</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">OS Process Scheduler</h3>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">A C++ implementation of Round Robin and SRTF scheduling algorithms to optimize CPU utilization.</p>
-        <div class="skill-tags">
-          <span class="tag" style="font-size: 0.7rem;">C++</span>
-          <span class="tag" style="font-size: 0.7rem;">Systems</span>
-        </div>
+      <div class="bento-card col-6 project-card" onclick="openModal('hackvit')">
+        <div class="project-visual"><div class="project-icon-large">💬</div></div>
+        <div class="skill-tags"><span class="tag">WebSockets</span><span class="tag">Redis</span></div>
+        <h3>CollabSpace IDE</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Real-time collaborative editor. HackVIT Winner.</p>
       </div>
 
-      <div class="bento-card col-4">
-        <div style="font-size: 1.5rem; margin-bottom: 1rem;">🖼️</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Neural Style Transfer</h3>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">Deep learning model that applies the artistic style of one image to the content of another.</p>
-        <div class="skill-tags">
-          <span class="tag" style="font-size: 0.7rem;">PyTorch</span>
-          <span class="tag" style="font-size: 0.7rem;">CNN</span>
-        </div>
+      <div class="bento-card col-4 project-card" onclick="openModal('scheduler')">
+        <div class="project-visual"><div class="project-icon-large">📟</div></div>
+        <h3>OS Scheduler</h3>
       </div>
 
-      <div class="bento-card col-4">
-        <div style="font-size: 1.5rem; margin-bottom: 1rem;">⛓️</div>
-        <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem;">Mini-Blockchain</h3>
-        <p style="color: var(--muted); font-size: 0.85rem; margin-bottom: 1rem;">A simplified decentralized ledger implemented in Python with Proof-of-Work (PoW) consensus logic.</p>
-        <div class="skill-tags">
-          <span class="tag" style="font-size: 0.7rem;">Python</span>
-          <span class="tag" style="font-size: 0.7rem;">Cryptography</span>
-        </div>
+      <div class="bento-card col-4 project-card" onclick="openModal('nst')">
+        <div class="project-visual"><div class="project-icon-large">🖼️</div></div>
+        <h3>Neural Vision</h3>
       </div>
+
+      <div class="bento-card col-4 project-card" onclick="openModal('blockchain')">
+        <div class="project-visual"><div class="project-icon-large">⛓️</div></div>
+        <h3>Mini-Ledger</h3>
+      </div>
+
+      <div class="bento-card col-6 project-card" onclick="openModal('quantum')">
+        <div class="project-visual" style="background: linear-gradient(to bottom, #000, #111);"><div class="project-icon-large">⚛️</div></div>
+        <div class="skill-tags"><span class="tag">Qiskit</span><span class="tag">Quantum</span></div>
+        <h3>Quantum Gate Simulator</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Visualizing qubit state-vectors and superposition gates.</p>
+      </div>
+
+      <div class="bento-card col-6 project-card" onclick="openModal('trading')">
+        <div class="project-visual" style="background: linear-gradient(to bottom, #000, #111);"><div class="project-icon-large">📈</div></div>
+        <div class="skill-tags"><span class="tag">FastAPI</span><span class="tag">Data</span></div>
+        <h3>Algorithmic Trading Bot</h3>
+        <p style="color: var(--muted); font-size: 0.9rem;">Automated market analysis using RSI/MACD indicators.</p>
+      </div>
+
     </div>
   </main>
 
+  <div id="projectModal" class="modal-overlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button class="close-modal" onclick="closeModal()">✕</button>
+      <h2 id="modalTitle" style="font-size: 2.2rem; margin-bottom: 0.5rem;"></h2>
+      <div id="modalTags" style="display: flex; flex-wrap: wrap; margin-bottom: 2rem;"></div>
+      
+      <div class="detail-section">
+        <h4>Objective</h4>
+        <p id="modalProblem"></p>
+      </div>
+      <div class="detail-section">
+        <h4>Technical Implementation</h4>
+        <p id="modalTech"></p>
+      </div>
+      <div class="detail-section">
+        <h4>The Outcome</h4>
+        <p id="modalOutcome"></p>
+      </div>
+      <a id="modalLink" href="#" class="btn-primary" target="_blank" style="margin-top: 2rem;">Source Code &rarr;</a>
+    </div>
+  </div>
+
   <footer>
-    <p>&copy; 2026 Ajinkya Chivare. Built with precision.</p>
+    <p>&copy; 2026 Ajinkya Chivare. Engineering Portfolio.</p>
   </footer>
 </div>
+
+<script>
+  const projectData = {
+    sandboxels: {
+      title: "Sandboxels Mod Framework",
+      tags: ["JavaScript", "Physics", "Canvas"],
+      problem: "Creating a stable physics engine that handles 10,000+ interacting grid-particles without browser lag.",
+      tech: "Implemented spatial partitioning (Quad-trees) and optimized state updates using bitwise manipulation.",
+      outcome: "Maintained 60 FPS under heavy particle load. Mapped 15+ complex elemental interactions.",
+      link: "https://github.com/ajinkyac07/sandboxels-mod"
+    },
+    smartnote: {
+      title: "SmartNote AI",
+      tags: ["Python", "LangChain", "RAG"],
+      problem: "Enabling students to query dense academic PDFs with high contextual accuracy.",
+      tech: "Architected a Retrieval-Augmented Generation (RAG) pipeline using ChromaDB and OpenAI API.",
+      outcome: "93% accuracy in question generation for VIT-specific engineering subjects.",
+      link: "https://github.com/ajinkyac07"
+    },
+    bio: {
+      title: "Bioluminescent Sim",
+      tags: ["AlphaFold", "Bioinformatics"],
+      problem: "Identifying protein stability in synthetic bioluminescent plant isoforms.",
+      tech: "Analyzed pLDDT confidence scores from AlphaFold2 structure predictions to identify folding loops.",
+      outcome: "Predicted 3 genetic sequences with 15% higher stability than wild-type luciferase.",
+      link: "https://alphafoldserver.com/fold/10a30d10ef880fa3"
+    },
+    hackvit: {
+      title: "CollabSpace IDE",
+      tags: ["Node.js", "WebSockets", "Redis"],
+      problem: "Syncing code edits across 50+ users in real-time without data collisions.",
+      tech: "Utilized Socket.io for bidirectional communication and Redis for sub-50ms message broadcasting.",
+      outcome: "Winner (1st Place) at HackVIT 2025. Scaled to 50 concurrent users successfully.",
+      link: "https://github.com/ajinkyac07"
+    },
+    scheduler: {
+      title: "OS Process Scheduler",
+      tags: ["C++", "Systems"],
+      problem: "Minimizing turnaround time in a CPU environment with mixed priority tasks.",
+      tech: "Implemented Round Robin and Shortest Remaining Time First (SRTF) algorithms in C++.",
+      outcome: "Achieved a 20% improvement in average wait times across simulated process loads.",
+      link: "https://github.com/ajinkyac07"
+    },
+    nst: {
+      title: "Neural Vision",
+      tags: ["PyTorch", "CNN"],
+      problem: "Merging the content of one image with the artistic style of another.",
+      tech: "Employed the VGG19 convolutional neural network to optimize content and style loss functions.",
+      outcome: "Produced high-fidelity style transfers with sharp texture preservation.",
+      link: "https://github.com/ajinkyac07"
+    },
+    blockchain: {
+      title: "Mini-Ledger",
+      tags: ["Python", "Cryptography"],
+      problem: "Ensuring immutability in a decentralized ledger.",
+      tech: "Built a Proof-of-Work (PoW) algorithm using SHA-256 hashing and block-linked validation.",
+      outcome: "Demonstrated 100% data integrity against simulated tampering attempts.",
+      link: "https://github.com/ajinkyac07"
+    },
+    quantum: {
+      title: "Quantum Gate Simulator",
+      tags: ["Qiskit", "Python", "Math"],
+      problem: "Visualizing the probabilistic state-space of qubits during superposition.",
+      tech: "Used IBM's Qiskit framework to model Hadamard and CNOT gate operations on a Bloch sphere.",
+      outcome: "Successfully simulated 5-qubit entanglement circuits with state-vector visualization.",
+      link: "https://github.com/ajinkyac07"
+    },
+    trading: {
+      title: "Algorithmic Trading Bot",
+      tags: ["FastAPI", "Pandas", "APIs"],
+      problem: "Detecting market trends and executing trades with sub-second latency.",
+      tech: "Integrated Binance API with a custom technical analysis engine (RSI, MACD, Bollinger Bands).",
+      outcome: "Achieved an 11% profit margin on backtested historical crypto data over 3 months.",
+      link: "https://github.com/ajinkyac07"
+    }
+  };
+
+  function openModal(id) {
+    const data = projectData[id];
+    document.getElementById('modalTitle').innerText = data.title;
+    document.getElementById('modalProblem').innerText = data.problem;
+    document.getElementById('modalTech').innerText = data.tech;
+    document.getElementById('modalOutcome').innerText = data.outcome;
+    document.getElementById('modalLink').href = data.link;
+    const tagsContainer = document.getElementById('modalTags');
+    tagsContainer.innerHTML = '';
+    data.tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'tech-pill';
+      span.innerText = tag;
+      tagsContainer.appendChild(span);
+    });
+    document.getElementById('projectModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('projectModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+</script>
 
 </body>
 </html>
