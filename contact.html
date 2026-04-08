@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajinkya Chivare | Contact</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Ajinkya.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="resume.html">Resume</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta" style="background: #e0e0e0; color: #000;">Contact</a>
+</nav>
+
+<div class="container">
+  <main style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 80vh;">
+    
+    <p class="section-label">Get In Touch</p>
+    <h1 class="section-title">Let's build together.</h1>
+    <p style="color: var(--muted); font-size: 1.2rem; margin-bottom: 3rem;">
+      Whether it's an internship or a tech chat — my inbox is open.
+    </p>
+
+    <div class="bento-card col-12" style="width: 100%; max-width: 600px;">
+      
+      <form action="https://formspree.io/f/mnjorlwd" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        
+        <input 
+          type="text" 
+          name="name"
+          placeholder="Your Name" 
+          required 
+          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem;"
+        >
+
+        <input 
+          type="email" 
+          name="email"
+          placeholder="Your Email Address" 
+          required 
+          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem;"
+        >
+
+        <textarea 
+          name="message"
+          placeholder="How can I help you?" 
+          rows="5" 
+          required 
+          style="width: 100%; padding: 1.2rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text); font-family: var(--font-main); font-size: 1rem; resize: vertical;"
+        ></textarea>
+
+        <button 
+          type="submit" 
+          class="btn-primary" 
+          style="width: 100%; padding: 1.2rem;"
+        >
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ajinkya Chivare. Built with precision.</p>
+  </footer>
+</div>
+
+</body>
+</html>

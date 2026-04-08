@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajinkya Chivare | Resume</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Interactive Timeline Styles */
+    .timeline-item {
+      position: relative;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 2.5rem;
+      cursor: pointer;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* Hover effects for the whole item */
+    .timeline-item:hover {
+      border-color: var(--accent);
+      background: linear-gradient(90deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* The interactive dot */
+    .timeline-dot {
+      position: absolute;
+      left: -6px;
+      top: 5px;
+      width: 10px;
+      height: 10px;
+      background: var(--text);
+      border-radius: 50%;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, box-shadow 0.3s;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.6);
+      background: #4f8ef7;
+      box-shadow: 0 0 12px rgba(79, 142, 247, 0.6);
+    }
+
+    /* Expand Hint */
+    .click-hint {
+      font-size: 0.7rem;
+      color: #4f8ef7;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+      margin-left: 10px;
+      font-weight: 600;
+    }
+    .timeline-item:hover .click-hint {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Hidden expanded details */
+    .timeline-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.3s ease-out;
+    }
+    
+    /* Active/Expanded State */
+    .timeline-item.active .timeline-details {
+      max-height: 500px; /* Arbitrary large height to allow expansion */
+      opacity: 1;
+      margin-top: 1rem;
+    }
+    .timeline-item.active .timeline-dot {
+      background: #4f8ef7;
+    }
+    .timeline-item.active .click-hint {
+      opacity: 1;
+      transform: translateX(0);
+      content: "(Click to collapse)";
+      color: var(--muted);
+    }
+
+    .details-list {
+      padding-left: 1.2rem;
+      color: #a0a0a0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .details-list li {
+      margin-bottom: 0.5rem;
+    }
+    .details-list li::marker {
+      color: #4f8ef7;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Ajinkya.</a>
+  <ul class="nav-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Work</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Contact</a>
+</nav>
+
+<div class="container">
+  <main>
+    <p class="section-label">Journey & Vision</p>
+    <h1 class="section-title">Experience & Roadmap.</h1>
+
+    <div class="bento-grid">
+      
+      <div class="bento-card col-6">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Experience</h3>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Sep 2025 – Present <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Technical Core Member</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">Developer Student Clubs, VIT</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Organize technical workshops and collaborate on club-wide open-source initiatives.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Led a sub-team of 5 developers to create the club's official event registration portal using Next.js and Firebase.</li>
+              <li>Conducted a hands-on Git & GitHub version control workshop for 150+ freshman attendees.</li>
+              <li>Actively review code submissions and manage pull requests for inner-club hackathons.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Oct 2024 & Oct 2025 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Open Source Contributor</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">Hacktoberfest</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Contributed to various beginner-friendly Python repositories and developed custom UI components.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Merged 8 successful pull requests into globally recognized open-source repositories.</li>
+              <li>Refactored legacy Python automation scripts to improve execution time by ~12%.</li>
+              <li>Improved ARIA accessibility standards for a popular React component library.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">May 2024 – Jul 2025 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Freelance Software Developer</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">Self-Employed</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Developed custom responsive landing pages and automated inventory scripts.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Built and deployed 3 full-stack websites for local retail clients using React and Node.js.</li>
+              <li>Integrated Stripe payment gateways and headless CMS (Sanity.io) for easy client content management.</li>
+              <li>Wrote Python web-scraping scripts to automate competitor price tracking for a local client.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card col-6">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Education</h3>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">2025 – 2029 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">B.Tech in Core CSE</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">VIT Vellore — CGPA: 9.1 / 10</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">First-year coursework: Object-Oriented Programming (OOPS), Data Structures (DSA), Operating Systems (OS).</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Maintaining top 10% class ranking across core technical subjects.</li>
+              <li>Active member of the academic Quantum Computing and Machine Learning sub-chapters.</li>
+              <li>Scored perfect marks in core algorithmic logic assessments and C++ fundamentals.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Oct 2025 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">1st Place — HackVIT Fresher Track</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">VIT University Flagship Hackathon</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Won among 600+ participants. Built CollabSpace — a real-time collaborative IDE — in 36 hours.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Spearheaded the WebSocket backend architecture to ensure zero-latency text synchronization.</li>
+              <li>Integrated Redis for rapid caching of active user sessions to prevent data loss.</li>
+              <li>Pitched the final product architecture to a panel of industry judges.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">2023 – 2025 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Higher Secondary Education</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">High School</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Focus on Physics, Mathematics, and Computer Science.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Graduated with Distinction (95% aggregate) in PCM subjects.</li>
+              <li>Built foundational logic games like Tic-Tac-Toe, Pac-Man, and Flappy Bird in Python using Pygame.</li>
+              <li>Served as an attacking midfielder for the school's varsity football team.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card col-6" style="background: #05050a; border-color: rgba(79, 142, 247, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+          <h3 style="font-size: 1.5rem; margin: 0;">Roadmap</h3>
+          <span style="background: var(--text); color: var(--bg); padding: 0.2rem 0.8rem; border-radius: 100px; font-size: 0.75rem; font-weight: 600;">Looking Ahead</span>
+        </div>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')" style="border-left-color: rgba(79, 142, 247, 0.3);">
+          <div class="timeline-dot" style="background: #4f8ef7;"></div>
+          <div style="font-size: 0.85rem; color: #4f8ef7; margin-bottom: 0.5rem; font-weight: 600;">Summer 2026 <span class="click-hint" style="color: var(--muted);">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Tier-1 Software Eng Internship</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Targeting a rigorous software engineering internship to transition my academic knowledge into production.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Primary focus: Backend architecture, distributed systems, and API design.</li>
+              <li>Currently grinding advanced Data Structures & Algorithms (400+ LeetCode problems solved) to prepare.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Mid 2026 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Google Summer of Code (GSoC)</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Aiming to participate as a core contributor for a Python or React OSS project.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Target organizations: Python Software Foundation, CNCF, or Postman.</li>
+              <li>Goal: Resolve critical deployment pipeline issues and learn enterprise-level Git workflows.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Late 2026 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Quantum Computing Foundations</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Transition from theoretical quantum mechanics into applied quantum computing.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Plan to complete the IBM Quantum Developer Certification.</li>
+              <li>Goal: Build a functional algorithm simulation (like Grover's Algorithm) using IBM's Qiskit framework in Python.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card col-6">
+        <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Certifications & Extras</h3>
+        
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Expected May 2026 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">AWS Cloud Practitioner</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">Amazon Web Services</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Validating foundational understanding of cloud concepts and infrastructure deployment.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Currently studying EC2, S3, IAM, and Serverless architectures.</li>
+              <li>Applying knowledge by migrating personal side-projects from Vercel/Heroku to native AWS instances.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item" onclick="this.classList.toggle('active')">
+          <div class="timeline-dot"></div>
+          <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">Issued Jan 2026 <span class="click-hint">(Click to expand)</span></div>
+          <div style="font-weight: 600; font-size: 1.2rem; margin-bottom: 0.2rem;">Machine Learning Specialization</div>
+          <div style="color: var(--muted); margin-bottom: 0.8rem;">DeepLearning.AI / Coursera</div>
+          <div style="color: var(--muted); font-size: 0.95rem;">Mastered core ML algorithms including neural networks and decision trees.</div>
+          
+          <div class="timeline-details">
+            <ul class="details-list">
+              <li>Built supervised learning models (Logistic Regression, Linear Regression) using scikit-learn.</li>
+              <li>Applied optimization techniques like Gradient Descent to custom datasets.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style="margin-top: 4.5rem;">
+          <a href="https://drive.google.com/uc?export=download&id=1iCSQiC25chvaY7GK164Dg-dhfazOdIfE" target="_blank" class="btn-primary" style="background: transparent; border: 1px solid var(--border); color: var(--text);">Download Resume PDF</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Ajinkya Chivare. Built with precision.</p>
+  </footer>
+</div>
+
+</body>
+</html>
